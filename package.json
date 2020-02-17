@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "@types/react-native": "^0.57.60"
-  }
+  },
+  "_resolved": "",
+  "_integrity": "",
+  "_from": "react-native-boundary@git+https://github.com/IvanKabetskyi/react-native-boundary.git"
 }

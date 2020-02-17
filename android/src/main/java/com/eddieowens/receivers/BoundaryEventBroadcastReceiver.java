@@ -3,7 +3,7 @@ package com.eddieowens.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.JobIntentService;
+import androidx.core.app.JobIntentService;
 import android.util.Log;
 
 import com.eddieowens.services.BoundaryEventJobIntentService;
@@ -18,6 +18,7 @@ public class BoundaryEventBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i(TAG, "Broadcasting geofence event");
+        context.startForegroundService(intent);
         JobIntentService.enqueueWork(context, BoundaryEventJobIntentService.class, 0, intent);
     }
 }
