@@ -38,7 +38,7 @@ public class BoundaryEventJobIntentService extends JobIntentService {
     public static final String ON_ENTER = "onEnter";
     public static final String ON_EXIT = "onExit";
 
-    public Bool enter = false;
+    public boolean enter = false;
 
     final Handler handler = new Handler();
 
