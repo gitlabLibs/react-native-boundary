@@ -68,7 +68,6 @@ public class BoundaryEventJobIntentService extends JobIntentService {
                 try{
                     if(enter ==  false){
                         sendEvent(this.getApplicationContext(), ON_ENTER, enteredGeofences);
-                        enter = true;
                     }
                 }catch(Exception error){
                     workSuccessful = true;
