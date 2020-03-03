@@ -38,6 +38,8 @@ public class BoundaryEventJobIntentService extends JobIntentService {
     public static final String ON_ENTER = "onEnter";
     public static final String ON_EXIT = "onExit";
 
+    public Bool enter = false;
+
     final Handler handler = new Handler();
 
     public BoundaryEventJobIntentService() {
@@ -64,9 +66,13 @@ public class BoundaryEventJobIntentService extends JobIntentService {
                     enteredGeofences.add(geofence.getRequestId());
                 }
                 try{
-                    sendEvent(this.getApplicationContext(), ON_ENTER, enteredGeofences);
+                    if(enter ==  false){
+                        sendEvent(this.getApplicationContext(), ON_ENTER, enteredGeofences);
+                        enter = true;
+                    }
                 }catch(Exception error){
                     workSuccessful = true;
+                    enter = false;
                     Log.e("BoundaryEventJobIntentService", "error with context");
                 }
                 break;
@@ -78,8 +84,10 @@ public class BoundaryEventJobIntentService extends JobIntentService {
                 }
                 try{
                     sendEvent(this.getApplicationContext(), ON_EXIT, exitingGeofences);
+                    enter = false;
                 }catch(Exception error){
                     workSuccessful = true;
+                    enter = false;
                     Log.e("BoundaryEventJobIntentService", "error with context");
                 }
                 break;
